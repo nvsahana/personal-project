@@ -8,7 +8,7 @@ import About from './mainpage/About';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/personal-project">
       <div className="app-root">
         <nav className="mp-nav">
           <Link to="/" className="mp-logo">I'm Mad 💔</Link>
