@@ -1,0 +1,115 @@
+:root{
+  --bg-1: #fff6f9;
+  --accent: #ff77aa;
+  --muted: #6b6b80;
+  --card: #ffffff;
+}
+
+.app-root{
+  min-height:100vh;
+  background: linear-gradient(180deg, #fff6f9 0%, #f7fbff 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--muted);
+  display:flex;
+  flex-direction:column;
+}
+
+.mp-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+}
+
+.mp-logo{
+  font-weight:700;
+  color:var(--accent);
+  text-decoration:none;
+  font-size:1.1rem;
+}
+
+.mp-navlinks a{ margin-left:1rem; text-decoration:none; color:var(--muted); }
+
+.mp-main{ flex:1; display:flex; align-items:center; justify-content:center; padding:2rem; }
+
+.mp-card{
+  width:100%; max-width:720px; background:var(--card); border-radius:16px; padding:2rem; box-shadow:0 8px 30px rgba(99,88,110,0.06);
+  text-align:center;
+  position: relative; /* allow absolutely positioned hearts and sparkles */
+  overflow: visible;
+}
+
+/* allow absolutely positioned hearts inside the card */
+.mp-card{ position: relative; overflow: visible; }
+
+.mp-title{ color:#3b2a3a; margin:0 0 0.5rem; }
+.mp-sub{ color:var(--muted); margin:0 0 1.25rem; }
+.mp-note{ font-size:0.95rem; color:#8b7f8f }
+
+.mp-actions{ display:flex; gap:0.75rem; justify-content:center; margin-top:1.25rem }
+.mp-btn{ padding:0.6rem 1rem; border-radius:10px; border:1px solid rgba(0,0,0,0.06); background:transparent; color:var(--muted); text-decoration:none }
+.mp-btn.primary{ background:linear-gradient(90deg,var(--accent),#ff99c2); color:white; border:none }
+
+.mp-list{ text-align:left; padding-left:1.25rem; color: #4b3b4b }
+.mp-list-item{ margin:0.6rem 0 }
+
+.mp-footer{ text-align:center; padding:1rem 0; color:#8b7f8f }
+
+/* flying heart animation */
+.flying-heart{
+  position:absolute;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  font-size:var(--size,20px);
+  width:var(--size,24px);
+  height:var(--size,24px);
+  transform-origin:center;
+  filter: drop-shadow(0 6px 14px rgba(255,119,170,0.14));
+  /* default values when not provided */
+  --tx: 160px;
+  --ty: -140px;
+  --rot: 20deg;
+  --scale: 1.15;
+  --dur: 1200ms;
+  color: var(--color, #ff77aa);
+  animation: flyBurst var(--dur) cubic-bezier(.22,.9,.31,1) forwards;
+}
+
+/* slightly fancier heart variant */
+.flying-heart.fancy{ text-shadow: 0 1px 0 rgba(255,255,255,0.14); }
+
+@keyframes flyBurst{
+  0% { transform: translate(0,0) rotate(0) scale(0.85); opacity:1; }
+  28% { transform: translate(calc(var(--tx) * 0.28), calc(var(--ty) * 0.28)) rotate(calc(var(--rot) * 0.28)) scale(calc(var(--scale) * 0.98)); opacity:0.98; }
+  60% { transform: translate(calc(var(--tx) * 0.62), calc(var(--ty) * 0.62)) rotate(calc(var(--rot) * 0.62)) scale(calc(var(--scale) * 1.05)); opacity:0.5; }
+  100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(var(--scale)); opacity:0; }
+}
+
+/* allow coloring the emoji */
+.flying-heart::before{ content: '❤️'; color: var(--color, #ff77aa); font-size: inherit }
+
+/* sparkles */
+.sparkle{
+  position:absolute;
+  width:var(--size,6px);
+  height:var(--size,6px);
+  border-radius:50%;
+  background:linear-gradient(180deg, #fff 0%, #ffd6e8 100%);
+  pointer-events:none;
+  transform-origin:center;
+  animation: sparkleMove var(--dur,900ms) forwards ease-out;
+  filter: drop-shadow(0 6px 10px rgba(255,150,200,0.12));
+}
+
+@keyframes sparkleMove{
+  0% { transform: translate(0,0) scale(1); opacity:1 }
+  40% { transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.4)) scale(0.9); opacity:0.9 }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.4); opacity:0 }
+}
+
+@media (max-width:600px){
+  .mp-card{ padding:1.25rem; margin:0 1rem }
+  .mp-nav{ padding:0.6rem 1rem }
+}
