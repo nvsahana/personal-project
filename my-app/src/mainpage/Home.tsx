@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   return (
     <div className="mp-card">
       <h1 className="mp-title">I'm Sad 😤</h1>
-      <p className="mp-sub">Yes! I'm mad at my boyfriend. Why are you feeling that I am not applying? I am! Most of the time from yesterday you are working too hard workwise, to not notice it, you always catch me when I am not applying!! This is my little site telling him how I feel and what he can do to win me back.</p>
+      <p className="mp-sub">Yes! I'm mad at my boyfriend. Why are you feeling that I am not applying? I am! Most of the time from yesterday you are working too hard workwise, to not notice it, you always catch me when I am not applying!! This is my little site telling him how I feel and what he can do to make me happy.</p>
 
       <div className="mp-actions">
         <button
